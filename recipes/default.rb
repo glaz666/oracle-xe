@@ -18,16 +18,17 @@
 # limitations under the License.
 #
 
-remote_file File.join(Chef::Config[:file_cache_path], 'oracle-xe-11.2.0-1.0.x86_64.rpm') do
-  source node['oracle-xe']['url']
-  action :create
-end
+#remote_file File.join(Chef::Config[:file_cache_path], 'oracle-xe-11.2.0-1.0.x86_64.rpm') do
+#  source node['oracle-xe']['url']
+#  action :create
+#end
 
 # Pre-req for Oracle %preinstall scriptlet
 package "bc"
 
 yum_package 'oracle-xe' do
-  source File.join(Chef::Config[:file_cache_path], 'oracle-xe-11.2.0-1.0.x86_64.rpm')
+  #source File.join(Chef::Config[:file_cache_path], 'oracle-xe-11.2.0-1.0.x86_64.rpm')
+  source node['oracle-xe']['url']
   action :install
 end
 
